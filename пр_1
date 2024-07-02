@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    int t1, t2, t3;
+    scanf("%d %d %d", &t1, &t2, &t3);
+
+    double total_time = t1 + t2 + t3;
+    double time_in_hours = total_time / 3.0;
+
+    printf("%.2f\n", time_in_hours);
+
+    return 0;
+}
