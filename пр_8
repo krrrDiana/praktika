@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+unsigned long long factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+unsigned long long countAnagrams(const char *word) {
+    int length = strlen(word);
+    unsigned long long result = factorial(length);
+
+    int counts[256] = {0}; 
+    for (int i = 0; i < length; i++) {
+        counts[(unsigned char)word[i]]++;
+    }
+
+    for (int i = 0; i < 256; i++) {
+        if (counts[i] > 1) {
+            result /= factorial(counts[i]);
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    char word[15]; 
+    printf("Введіть слово: ");
+    scanf("%14s", word); 
+
+    unsigned long long anagramCount = countAnagrams(word);
+    printf("Кількість можливих анаграм: %llu\n", anagramCount);
+
+    return 0;
+}
